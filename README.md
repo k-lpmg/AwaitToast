@@ -84,7 +84,7 @@ defaultBehavior.dismissDuration = 0.3
 
 ## Installation
 
-#### CocoaPods (iOS 8+)
+#### CocoaPods (iOS 9+)
 
 ```ruby
 platform :ios, '9.0'
