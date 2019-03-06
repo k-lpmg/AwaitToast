@@ -95,7 +95,7 @@ target 'MyApp' do
 end
 ```
 
-### Carthage (iOS 8+)
+### Carthage (iOS 9+)
 
 ```ruby
 github "k-lpmg/AwaitToast"
