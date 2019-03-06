@@ -91,7 +91,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'MyApp' do
-pod 'AwaitToast'
+    pod 'AwaitToast'
 end
 ```
 
