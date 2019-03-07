@@ -29,7 +29,7 @@ public final class IconToastAppearance: ToastAppearance {
     // TextLabel
     public var numberOfLines: Int = 0
     public var textAlignment: NSTextAlignment = .left
-    public var textFont: UIFont = UIFont.preferredFont(forTextStyle: .headline)
+    public var textFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline)
     public var textColor: UIColor = .white
     
 }
