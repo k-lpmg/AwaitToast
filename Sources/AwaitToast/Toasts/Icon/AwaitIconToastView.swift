@@ -35,6 +35,7 @@ class AwaitIconToastView: AwaitToastView<IconToastAppearance> {
     lazy var initialTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = appearance.numberOfLines
         label.textAlignment = appearance.textAlignment
         label.font = appearance.textFont
         label.textColor = appearance.textColor
@@ -42,6 +43,7 @@ class AwaitIconToastView: AwaitToastView<IconToastAppearance> {
     }()
     lazy var endTextLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = appearance.numberOfLines
         label.textAlignment = appearance.textAlignment
         label.font = appearance.textFont
         label.textColor = appearance.textColor

@@ -80,6 +80,7 @@ class IconToastView: ToastView<IconToastAppearance> {
         imageView.contentMode = appearance.imageContentMode
         imageView.tintColor = appearance.imageTintColor
         
+        textLabel.numberOfLines = appearance.numberOfLines
         textLabel.textAlignment = appearance.textAlignment
         textLabel.font = appearance.textFont
         textLabel.textColor = appearance.textColor

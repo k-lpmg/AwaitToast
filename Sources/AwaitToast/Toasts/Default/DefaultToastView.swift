@@ -58,6 +58,7 @@ class DefaultToastView: ToastView<DefaultToastAppearance> {
     // MARK: - Private methods
     
     private func setProperties() {
+        textLabel.numberOfLines = appearance.numberOfLines
         textLabel.textAlignment = appearance.textAlignment
         textLabel.font = appearance.textFont
         textLabel.textColor = appearance.textColor
