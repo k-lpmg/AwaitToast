@@ -61,6 +61,12 @@ final class ExampleTableViewCell: UITableViewCell {
         targetLabel.text = type.target
     }
     
+    func configure(image: UIImage, action: String, target: String) {
+        iconImageView.image = image
+        actionLabel.text = action
+        targetLabel.text = target
+    }
+    
 }
 
 // MARK: - Layout

@@ -18,6 +18,7 @@ final class ToastExampleTableViewController: UITableViewController {
     let settings = SettingCellType.allCases
     let defaultExamples = DefaultExampleCellType.allCases
     let awaitExamples = AwaitExampleCellType.allCases
+    let longTextExample = LongTextCellType.allCases
     
     var currentToast: Toast?
     var currentAwaitToast: AwaitToast?
@@ -50,6 +51,8 @@ final class ToastExampleTableViewController: UITableViewController {
             return defaultExamples.count
         case .awaitExamples:
             return awaitExamples.count
+        case .longText:
+            return longTextExample.count
         }
     }
     
@@ -59,7 +62,7 @@ final class ToastExampleTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingSwitchTableViewCell.reuseIdentifier, for: indexPath) as! SettingSwitchTableViewCell
             cell.indexPath = indexPath
             cell.delegate = self
-            cell.configure(with: settings[indexPath.row])
+            cell.configure(with: settings[indexPath.row].title)
             
             if let setting = SettingCellType(rawValue: indexPath.row) {
                 switch setting {
@@ -78,6 +81,22 @@ final class ToastExampleTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: ExampleTableViewCell.reuseIdentifier, for: indexPath) as! ExampleTableViewCell
             cell.configure(with: awaitExamples[indexPath.row] as ExampleCellType)
             return cell
+        case .longText:
+            let longTextCell = LongTextCellType(rawValue: indexPath.row)!
+            switch longTextCell {
+            case .automaticDimension:
+                let cell = tableView.dequeueReusableCell(withIdentifier: SettingSwitchTableViewCell.reuseIdentifier, for: indexPath) as! SettingSwitchTableViewCell
+                cell.indexPath = indexPath
+                cell.delegate = self
+                cell.configure(with: longTextCell.title)
+                
+                cell.isSwitchOn = ToastAppearanceManager.default.height == AutomaticDimension
+                return cell
+            case .longTestToast:
+                let cell = tableView.dequeueReusableCell(withIdentifier: ExampleTableViewCell.reuseIdentifier, for: indexPath) as! ExampleTableViewCell
+                cell.configure(image: UIImage(named: "longText")!, action: "Show", target: "Default long text")
+                return cell
+            }
         }
     }
     
@@ -90,8 +109,6 @@ final class ToastExampleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let image = UIImage(named: "egg")!.withRenderingMode(.alwaysTemplate)
-        
         switch sections[indexPath.section] {
         case .defaultExamples:
             guard let cellType = DefaultExampleCellType(rawValue: indexPath.row) else {return}
@@ -101,6 +118,7 @@ final class ToastExampleTableViewController: UITableViewController {
                 currentToast = Toast.default(text: "Default toast", direction: direction)
                 currentToast?.show()
             case .icon:
+                let image = UIImage(named: "egg")!.withRenderingMode(.alwaysTemplate)
                 currentToast = Toast.icon(image: image, text: "Icon toast", direction: direction)
                 currentToast?.show()
             case .dismissDefaultLatestToast:
@@ -119,6 +137,7 @@ final class ToastExampleTableViewController: UITableViewController {
             case .finishDefaultAwait:
                 currentAwaitToast?.finish()
             case .iconAwait:
+                let image = UIImage(named: "egg")!.withRenderingMode(.alwaysTemplate)
                 currentAwaitToast?.finish()
                 currentAwaitToast = AwaitToast.icon(image: image, initialText: "Await icon toast start", endText: "Await icon toast end", direction: direction)
                 currentAwaitToast?.show()
@@ -128,6 +147,31 @@ final class ToastExampleTableViewController: UITableViewController {
                 AwaitToast.latestDismiss()
             case .dismissAllToast:
                 AwaitToast.dismissAll()
+            }
+        case .longText:
+            guard let cellType = LongTextCellType(rawValue: indexPath.row) else {return}
+            
+            switch cellType {
+            case .longTestToast:
+                let text = """
+                This is long text line 1
+                This is long text line 2
+                This is long text line 3
+                This is long text line 4
+                This is long text line 5
+                This is long text line 6
+                This is long text line 7
+                This is long text line 8
+                This is long text line 9
+                This is long text line 10
+                This is long text line 11
+                This is long text line 12
+                This is long text line 13
+                """
+                currentToast = Toast.default(text: text, direction: direction)
+                currentToast?.show()
+            default:
+                break
             }
         default:
             break
@@ -155,13 +199,30 @@ final class ToastExampleTableViewController: UITableViewController {
 extension ToastExampleTableViewController: SettingSwitchTableViewCellDelegate {
     
     func settingSwitchTableViewCell(_ cell: SettingSwitchTableViewCell, switchUpdated isOn: Bool) {
-        guard let type = SettingCellType(rawValue: cell.indexPath?.row ?? -1) else {return}
-        switch type {
-        case .tapToDismiss:
-            ToastBehaviorManager.`default`.isTappedDismissEnabled = isOn
-            ToastBehaviorManager.await.isTappedDismissEnabled = isOn
-        case .topDirection:
-            direction = isOn ? .top : .bottom
+        guard let indexPath = cell.indexPath else {return}
+
+        switch sections[indexPath.section] {
+        case .settings:
+            guard let type = SettingCellType(rawValue: cell.indexPath?.row ?? -1) else {return}
+            
+            switch type {
+            case .tapToDismiss:
+                ToastBehaviorManager.default.isTappedDismissEnabled = isOn
+                ToastBehaviorManager.await.isTappedDismissEnabled = isOn
+            case .topDirection:
+                direction = isOn ? .top : .bottom
+            }
+        case .longText:
+            guard let type = LongTextCellType(rawValue: cell.indexPath?.row ?? -1) else {return}
+            
+            switch type {
+            case .automaticDimension:
+                ToastAppearanceManager.default.height = isOn ? AutomaticDimension : 96
+            default:
+                break
+            }
+        default:
+            break
         }
     }
     

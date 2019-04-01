@@ -63,8 +63,8 @@ final class SettingSwitchTableViewCell: UITableViewCell {
     
     // MARK: - Internal methods
     
-    func configure(with type: SettingCellType) {
-        settingLabel.text = type.title
+    func configure(with text: String) {
+        settingLabel.text = text
     }
     
     // MARK: - Private methods

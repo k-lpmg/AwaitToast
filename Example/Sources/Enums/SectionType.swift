@@ -10,6 +10,7 @@ enum SectionType: Int, CaseIterable {
     case settings
     case defaultExamples
     case awaitExamples
+    case longText
     
     var title: String {
         switch self {
@@ -19,6 +20,8 @@ enum SectionType: Int, CaseIterable {
             return "Default Examples"
         case .awaitExamples:
             return "Await Examples"
+        case .longText:
+            return "Long Text Example"
         }
     }
 }
