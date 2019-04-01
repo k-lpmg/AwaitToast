@@ -65,6 +65,9 @@ defaultAppearance.height = 128
 defaultAppearance.backgroundColor = .white
 defaultAppearance.numberOfLines = 1
 defaultAppearance.textAlignment = .left
+
+// Self-sizing
+defaultAppearance.height = AutomaticDimension
 ...
 ```
 
