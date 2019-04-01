@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AwaitToast"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "🍞 Basic toast as well as async waiting toast."
   s.homepage     = "https://github.com/k-lpmg/AwaitToast"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
