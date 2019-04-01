@@ -15,10 +15,10 @@ public final class DefaultToastAppearance: ToastAppearance {
     }
     
     // EdgeInsets
-    public var titleEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    public var titleEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
     
     // ToastView
-    public var height: CGFloat = 64
+    public var height: CGFloat = 96
     public var backgroundColor: UIColor = UIColor.black
     
     // TextLabel

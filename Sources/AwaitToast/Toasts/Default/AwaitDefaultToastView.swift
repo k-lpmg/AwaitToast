@@ -99,7 +99,6 @@ extension AwaitDefaultToastView {
     
     private func layout() {
         let titleEdgeInsets = appearance.titleEdgeInsets
-        
         initialTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: titleEdgeInsets.left).isActive = true
         initialTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: titleEdgeInsets.top).isActive = true
         initialTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -titleEdgeInsets.right).isActive = true

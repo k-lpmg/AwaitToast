@@ -15,11 +15,11 @@ public final class IconToastAppearance: ToastAppearance {
     }
     
     // EdgeInsets
-    public var titleEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 16)
+    public var titleEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 16)
     public var imageEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
     
     // ToastView
-    public var height: CGFloat = 64
+    public var height: CGFloat = 96
     public var backgroundColor: UIColor = UIColor.black
 
     // ImageView

@@ -29,7 +29,6 @@
 		65182887223024A9007E54E5 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65182865223024A9007E54E5 /* GlobalFunction.swift */; };
 		65182888223024A9007E54E5 /* ToastOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65182867223024A9007E54E5 /* ToastOperation.swift */; };
 		65182889223024A9007E54E5 /* DefaultToastOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65182868223024A9007E54E5 /* DefaultToastOperation.swift */; };
-		6518288A223024A9007E54E5 /* FrameChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65182869223024A9007E54E5 /* FrameChangeable.swift */; };
 		6518288B223024A9007E54E5 /* ToastDynamicDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6518286A223024A9007E54E5 /* ToastDynamicDispatch.swift */; };
 		6518288C223024A9007E54E5 /* AwaitToastOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6518286B223024A9007E54E5 /* AwaitToastOperation.swift */; };
 		6518288D223024A9007E54E5 /* DefaultToastBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6518286D223024A9007E54E5 /* DefaultToastBehavior.swift */; };
@@ -46,6 +45,8 @@
 		659E3953222BA27800062BDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659E3951222BA27800062BDE /* LaunchScreen.storyboard */; };
 		65DDDD53222D50140076118E /* AwaitToast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659E38F4222BA21A00062BDE /* AwaitToast.framework */; };
 		65DDDD54222D50140076118E /* AwaitToast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 659E38F4222BA21A00062BDE /* AwaitToast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65F146752251CB5C00F7CFF6 /* LongTextCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F146742251CB5C00F7CFF6 /* LongTextCellType.swift */; };
+		65F1467A2251D47E00F7CFF6 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F146792251D47E00F7CFF6 /* GlobalConstants.swift */; };
 		65FB9951222C40D300A75E8A /* ToastExampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB994C222C40D300A75E8A /* ToastExampleTableViewController.swift */; };
 		65FB9952222C40D300A75E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB994D222C40D300A75E8A /* AppDelegate.swift */; };
 		65FB995F222C412300A75E8A /* SettingCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FB995C222C412300A75E8A /* SettingCellType.swift */; };
@@ -102,7 +103,6 @@
 		65182865223024A9007E54E5 /* GlobalFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
 		65182867223024A9007E54E5 /* ToastOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastOperation.swift; sourceTree = "<group>"; };
 		65182868223024A9007E54E5 /* DefaultToastOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultToastOperation.swift; sourceTree = "<group>"; };
-		65182869223024A9007E54E5 /* FrameChangeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameChangeable.swift; sourceTree = "<group>"; };
 		6518286A223024A9007E54E5 /* ToastDynamicDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastDynamicDispatch.swift; sourceTree = "<group>"; };
 		6518286B223024A9007E54E5 /* AwaitToastOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwaitToastOperation.swift; sourceTree = "<group>"; };
 		6518286D223024A9007E54E5 /* DefaultToastBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultToastBehavior.swift; sourceTree = "<group>"; };
@@ -121,6 +121,8 @@
 		659E394F222BA27800062BDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		659E3952222BA27800062BDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		659E3954222BA27800062BDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65F146742251CB5C00F7CFF6 /* LongTextCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTextCellType.swift; sourceTree = "<group>"; };
+		65F146792251D47E00F7CFF6 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		65FB994C222C40D300A75E8A /* ToastExampleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastExampleTableViewController.swift; sourceTree = "<group>"; };
 		65FB994D222C40D300A75E8A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65FB995C222C412300A75E8A /* SettingCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCellType.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				6518284B2230137D007E54E5 /* AwaitExampleCellType.swift */,
 				6518284922301372007E54E5 /* DefaultExampleCellType.swift */,
 				65FB995D222C412300A75E8A /* ExampleCellType.swift */,
+				65F146742251CB5C00F7CFF6 /* LongTextCellType.swift */,
 				65FB9962222C41A900A75E8A /* SectionType.swift */,
 				65FB995C222C412300A75E8A /* SettingCellType.swift */,
 			);
@@ -225,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				65182865223024A9007E54E5 /* GlobalFunction.swift */,
+				65F146792251D47E00F7CFF6 /* GlobalConstants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -234,7 +238,6 @@
 			children = (
 				6518286B223024A9007E54E5 /* AwaitToastOperation.swift */,
 				65182868223024A9007E54E5 /* DefaultToastOperation.swift */,
-				65182869223024A9007E54E5 /* FrameChangeable.swift */,
 				6518286A223024A9007E54E5 /* ToastDynamicDispatch.swift */,
 				65182867223024A9007E54E5 /* ToastOperation.swift */,
 			);
@@ -457,8 +460,8 @@
 				6518287E223024A9007E54E5 /* AwaitDefaultToastView.swift in Sources */,
 				6518288E223024A9007E54E5 /* ToastBehaviorManager.swift in Sources */,
 				65182888223024A9007E54E5 /* ToastOperation.swift in Sources */,
-				6518288A223024A9007E54E5 /* FrameChangeable.swift in Sources */,
 				65182881223024A9007E54E5 /* Icon.swift in Sources */,
+				65F1467A2251D47E00F7CFF6 /* GlobalConstants.swift in Sources */,
 				65182884223024A9007E54E5 /* AwaitIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +472,7 @@
 			files = (
 				65FB9952222C40D300A75E8A /* AppDelegate.swift in Sources */,
 				65FB995F222C412300A75E8A /* SettingCellType.swift in Sources */,
+				65F146752251CB5C00F7CFF6 /* LongTextCellType.swift in Sources */,
 				6518284C2230137D007E54E5 /* AwaitExampleCellType.swift in Sources */,
 				6518284A22301372007E54E5 /* DefaultExampleCellType.swift in Sources */,
 				65FB9969222C438100A75E8A /* SettingSwitchTableViewCell.swift in Sources */,

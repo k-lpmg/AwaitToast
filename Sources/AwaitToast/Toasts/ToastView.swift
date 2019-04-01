@@ -10,6 +10,10 @@ import UIKit
 
 class ToastView<A>: UIView where A: ToastAppearance {
     
+    // MARK: - NSLayoutConstraints
+    
+    private var contentViewTop: NSLayoutConstraint?
+    
     // MARK: - Properties
     
     let appearance: A = A.shared
@@ -28,65 +32,42 @@ class ToastView<A>: UIView where A: ToastAppearance {
         self.direction = direction
         super.init(frame: .zero)
         
-        setProperties()
+        backgroundColor = appearance.backgroundColor
+        addSubview(contentView)
+        layout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Internal methods
+}
+
+// MARK: - Layout
+
+extension ToastView {
     
-    func showContent(duration: TimeInterval) {
-        addSubview(contentView)
+    private func layout() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        contentView.frame = getContentViewFrame()
-        
-        UIView.animate(withDuration: duration) {
-            var frame = self.contentView.frame
-            frame.origin.y = self.getContentViewToOriginY()
-            self.contentView.frame = frame
-        }
-    }
-    
-    // MARK: - Private methods
-    
-    private func setProperties() {
-        backgroundColor = appearance.backgroundColor
-    }
-    
-    private func getContentViewFrame() -> CGRect {
-        let statusBarSize = UIApplication.shared.statusBarFrame.size
-        
-        let originY: CGFloat
-        let height: CGFloat
+        let topConstant: CGFloat
+        let bottomConstant: CGFloat
         switch direction {
         case .top:
-            originY = -appearance.height
-            height = bounds.height - statusBarSize.height
+            topConstant = UIApplication.shared.statusBarFrame.size.height
+            bottomConstant = 0
         case .bottom:
-            originY = appearance.height
-            if #available(iOS 11.0, *) {
-                height = bounds.height - safeAreaInsets.bottom
+            topConstant = 0
+            if #available(iOS 11.0, *), let window = UIApplication.shared.keyWindow {
+                bottomConstant = window.safeAreaInsets.bottom
             } else {
-                height = bounds.height
+                bottomConstant = 0
             }
         }
-        let width = UIScreen.main.bounds.width
-        return CGRect(x: 0, y: originY, width: width, height: height)
-    }
-    
-    private func getContentViewToOriginY() -> CGFloat {
-        let statusBarSize = UIApplication.shared.statusBarFrame.size
-        
-        let toOriginY: CGFloat
-        switch direction {
-        case .top:
-            toOriginY = statusBarSize.height
-        case .bottom:
-            toOriginY = 0
-        }
-        return toOriginY
+        contentView.topAnchor.constraint(equalTo: topAnchor, constant: topConstant).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomConstant).isActive = true
     }
     
 }

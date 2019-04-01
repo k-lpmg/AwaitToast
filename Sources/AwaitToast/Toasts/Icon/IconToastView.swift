@@ -25,14 +25,21 @@ class IconToastView: ToastView<IconToastAppearance> {
     
     // MARK: - UI Components
     
-    public let imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = image
+        imageView.contentMode = appearance.imageContentMode
+        imageView.tintColor = appearance.imageTintColor
         return imageView
     }()
-    let textLabel: UILabel = {
+    lazy var textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = appearance.numberOfLines
+        label.textAlignment = appearance.textAlignment
+        label.font = appearance.textFont
+        label.textColor = appearance.textColor
         return label
     }()
     
@@ -67,23 +74,9 @@ class IconToastView: ToastView<IconToastAppearance> {
     // MARK: - Internal methods
     
     func commonInit() {
-        setProperties()
         contentView.addSubview(imageView)
         contentView.addSubview(textLabel)
         layout()
-    }
-    
-    // MARK: - Private methods
-    
-    private func setProperties() {
-        imageView.image = image
-        imageView.contentMode = appearance.imageContentMode
-        imageView.tintColor = appearance.imageTintColor
-        
-        textLabel.numberOfLines = appearance.numberOfLines
-        textLabel.textAlignment = appearance.textAlignment
-        textLabel.font = appearance.textFont
-        textLabel.textColor = appearance.textColor
     }
     
 }

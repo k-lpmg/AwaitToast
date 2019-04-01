@@ -27,9 +27,12 @@ class AwaitIconToastView: AwaitToastView<IconToastAppearance> {
     
     // MARK: - UI Components
     
-    public let imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = image
+        imageView.contentMode = appearance.imageContentMode
+        imageView.tintColor = appearance.imageTintColor
         return imageView
     }()
     lazy var initialTextLabel: UILabel = {
@@ -118,18 +121,9 @@ class AwaitIconToastView: AwaitToastView<IconToastAppearance> {
     // MARK: - Internal methods
     
     func commonInit() {
-        setProperties()
         contentView.addSubview(imageView)
         contentView.addSubview(initialTextLabel)
         layout()
-    }
-    
-    // MARK: - Private methods
-    
-    private func setProperties() {
-        imageView.image = image
-        imageView.contentMode = appearance.imageContentMode
-        imageView.tintColor = appearance.imageTintColor
     }
     
 }

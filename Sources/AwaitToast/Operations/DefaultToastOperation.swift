@@ -40,35 +40,4 @@ class DefaultToastOperation<A>: ToastOperation<A, DefaultToastBehavior> where A:
         dismiss()
     }
     
-    // MARK: - Private methods
-    
-    private func dismiss(completion: ((Bool) -> Void)? = nil) {
-        self.isFinished = true
-        
-        let toOriginX = view.frame.origin.x
-        let toOriginY: CGFloat
-        switch view.direction {
-        case .top:
-            toOriginY = -view.bounds.height
-        case .bottom:
-            toOriginY = view.frame.origin.y + view.bounds.height
-        }
-        
-        UIView.animate(withDuration: behavior.dismissDuration,
-                       animations: {
-                        self.view.frame.origin = CGPoint(x: toOriginX, y: toOriginY)
-        },
-                       completion: { (_) in
-                        self.view.removeFromSuperview()
-        })
-    }
-    
-    private func showToast() {
-        guard let window = UIApplication.shared.keyWindow else {return}
-        
-        updateFrame(window: window)
-        window.addSubview(view)
-        view.showContent(duration: behavior.showDurarion)
-    }
-    
 }

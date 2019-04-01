@@ -17,9 +17,13 @@ class DefaultToastView: ToastView<DefaultToastAppearance> {
     
     // MARK: - UI Components
     
-    let textLabel: UILabel = {
+    lazy var textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = appearance.numberOfLines
+        label.textAlignment = appearance.textAlignment
+        label.font = appearance.textFont
+        label.textColor = appearance.textColor
         return label
     }()
     
@@ -50,18 +54,8 @@ class DefaultToastView: ToastView<DefaultToastAppearance> {
     // MARK: - Internal methods
     
     func commonInit() {
-        setProperties()
         contentView.addSubview(textLabel)
         layout()
-    }
-    
-    // MARK: - Private methods
-    
-    private func setProperties() {
-        textLabel.numberOfLines = appearance.numberOfLines
-        textLabel.textAlignment = appearance.textAlignment
-        textLabel.font = appearance.textFont
-        textLabel.textColor = appearance.textColor
     }
     
 }
@@ -72,7 +66,6 @@ extension DefaultToastView {
     
     private func layout() {
         let titleEdgeInsets = appearance.titleEdgeInsets
-        
         textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: titleEdgeInsets.left).isActive = true
         textLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: titleEdgeInsets.top).isActive = true
         textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -titleEdgeInsets.right).isActive = true

@@ -25,7 +25,7 @@ class ToastOperation<A, B>: Operation where A: ToastAppearance, B: ToastBehavior
         self.view = view
         super.init()
         
-        _dynamicDispatch = .init(view: behavior.isTappedDismissEnabled ? view : nil, operation: self, frameChangeable: self)
+        _dynamicDispatch = .init(view: behavior.isTappedDismissEnabled ? view : nil, operation: self)
     }
     
     // MARK: - Overridden: Operation
@@ -46,34 +46,60 @@ class ToastOperation<A, B>: Operation where A: ToastAppearance, B: ToastBehavior
         toastAbstractMethod()
     }
     
-}
-
-// MARK: - FrameChangeable
-
-extension ToastOperation: FrameChangeable {
+    // MARK: - Internal methods
     
-    func updateFrame(window: UIWindow) {
-        view.frame = getFrametoBeUpated(from: window)
-    }
-    
-    private func getFrametoBeUpated(from window: UIWindow) -> CGRect {
-        let appearanceHeight = view.appearance.height
-        let statusBarSize = UIApplication.shared.statusBarFrame.size
-        let originY: CGFloat
-        let height: CGFloat
+    func dismiss(completion: ((Bool) -> Void)? = nil) {
+        self.isFinished = true
+        
+        let toOriginX = view.frame.origin.x
+        let toOriginY: CGFloat
         switch view.direction {
         case .top:
-            originY = 0
-            height = appearanceHeight + statusBarSize.height
+            toOriginY = -view.bounds.height
         case .bottom:
-            if #available(iOS 11.0, *) {
-                height = appearanceHeight + window.safeAreaInsets.bottom
-            } else {
-                height = appearanceHeight
-            }
-            originY = window.bounds.height - height
+            toOriginY = view.frame.origin.y + view.bounds.height
         }
-        return CGRect(x: 0, y: originY, width: window.bounds.width, height: height)
+        
+        UIView.animate(withDuration: behavior.dismissDuration,
+                       animations: {
+                        self.view.frame.origin = CGPoint(x: toOriginX, y: toOriginY)
+        },
+                       completion: { (_) in
+                        self.view.removeFromSuperview()
+        })
+    }
+    
+    func showToast() {
+        guard let window = UIApplication.shared.keyWindow else {return}
+        
+        window.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: window.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: window.trailingAnchor).isActive = true
+        if view.appearance.height == AutomaticDimension {
+            view.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
+        } else {
+            view.heightAnchor.constraint(equalToConstant: view.appearance.height).isActive = true
+        }
+        
+        let initialViewYAnchor: NSLayoutConstraint
+        let toViewYAnchor: NSLayoutConstraint
+        switch self.view.direction {
+        case .top:
+            initialViewYAnchor = self.view.bottomAnchor.constraint(equalTo: window.topAnchor)
+            toViewYAnchor = self.view.topAnchor.constraint(equalTo: window.topAnchor)
+        case .bottom:
+            initialViewYAnchor = self.view.topAnchor.constraint(equalTo: window.bottomAnchor)
+            toViewYAnchor = self.view.bottomAnchor.constraint(equalTo: window.bottomAnchor)
+        }
+        initialViewYAnchor.isActive = true
+        window.layoutIfNeeded()
+        
+        UIView.animate(withDuration: behavior.showDurarion) {
+            initialViewYAnchor.isActive = false
+            toViewYAnchor.isActive = true
+            window.layoutIfNeeded()
+        }
     }
     
 }
