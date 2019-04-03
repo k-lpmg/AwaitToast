@@ -20,8 +20,8 @@ final class ToastExampleTableViewController: UITableViewController {
     let awaitExamples = AwaitExampleCellType.allCases
     let longTextExample = LongTextCellType.allCases
     
-    var currentToast: Toast?
-    var currentAwaitToast: AwaitToast?
+    var defaultAwaitToast: AwaitToast?
+    var iconAwaitToast: AwaitToast?
     var direction: ToastDirection = .top
     
     // MARK: - Overridden: UITableViewController
@@ -115,12 +115,12 @@ final class ToastExampleTableViewController: UITableViewController {
             
             switch cellType {
             case .default:
-                currentToast = Toast.default(text: "Default toast", direction: direction)
-                currentToast?.show()
+                let toast = Toast.default(text: "Default toast", direction: direction)
+                toast.show()
             case .icon:
                 let image = UIImage(named: "egg")!.withRenderingMode(.alwaysTemplate)
-                currentToast = Toast.icon(image: image, text: "Icon toast", direction: direction)
-                currentToast?.show()
+                let toast = Toast.icon(image: image, text: "Icon toast", direction: direction)
+                toast.show()
             case .dismissDefaultLatestToast:
                 Toast.latestDismiss()
             case .dismissAllToast:
@@ -131,18 +131,20 @@ final class ToastExampleTableViewController: UITableViewController {
             
             switch cellType {
             case .defaultAwait:
-                currentAwaitToast?.finish()
-                currentAwaitToast = AwaitToast.default(initialText: "Await default toast start", endText: "Await default toast end", direction: direction)
-                currentAwaitToast?.show()
+                defaultAwaitToast?.finish()
+                
+                defaultAwaitToast = AwaitToast.default(initialText: "Await default toast start", endText: "Await default toast end", direction: direction)
+                defaultAwaitToast?.show()
             case .finishDefaultAwait:
-                currentAwaitToast?.finish()
+                defaultAwaitToast?.finish()
             case .iconAwait:
+                iconAwaitToast?.finish()
+                
                 let image = UIImage(named: "egg")!.withRenderingMode(.alwaysTemplate)
-                currentAwaitToast?.finish()
-                currentAwaitToast = AwaitToast.icon(image: image, initialText: "Await icon toast start", endText: "Await icon toast end", direction: direction)
-                currentAwaitToast?.show()
+                iconAwaitToast = AwaitToast.icon(image: image, initialText: "Await icon toast start", endText: "Await icon toast end", direction: direction)
+                iconAwaitToast?.show()
             case .finishIconAwait:
-                currentAwaitToast?.finish()
+                iconAwaitToast?.finish()
             case .dismissAwaitLatestToast:
                 AwaitToast.latestDismiss()
             case .dismissAllToast:
@@ -168,8 +170,8 @@ final class ToastExampleTableViewController: UITableViewController {
                 This is long text line 12
                 This is long text line 13
                 """
-                currentToast = Toast.default(text: text, direction: direction)
-                currentToast?.show()
+                let toast = Toast.default(text: text, direction: direction)
+                toast.show()
             default:
                 break
             }
