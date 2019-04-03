@@ -67,7 +67,7 @@ extension ToastView {
             }
         }
         contentView.topAnchor.constraint(equalTo: topAnchor, constant: topConstant).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomConstant).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomConstant).isActive = true
     }
     
 }
