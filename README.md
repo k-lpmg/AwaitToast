@@ -69,9 +69,6 @@ defaultAppearance.height = 128
 defaultAppearance.backgroundColor = .white
 defaultAppearance.numberOfLines = 1
 defaultAppearance.textAlignment = .left
-
-// Self-sizing
-defaultAppearance.height = AutomaticDimension
 ...
 ```
 
@@ -91,6 +88,8 @@ defaultBehavior.dismissDuration = 0.3
 ```
 
 ### Self-sizing
+<img src="https://user-images.githubusercontent.com/15151687/55480769-f8576300-565b-11e9-9457-79e4b43ad087.gif" width="400" height="830">
+
 ```swift
 ToastAppearanceManager.default.height = AutomaticDimension
 ToastAppearanceManager.icon.height = AutomaticDimension\
