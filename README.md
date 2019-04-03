@@ -92,7 +92,7 @@ defaultBehavior.dismissDuration = 0.3
 
 ```swift
 ToastAppearanceManager.default.height = AutomaticDimension
-ToastAppearanceManager.icon.height = AutomaticDimension\
+ToastAppearanceManager.icon.height = AutomaticDimension
 ```
 
 ## Installation
