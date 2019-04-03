@@ -9,8 +9,12 @@ Inspired by facebook posting toast.
 
 ## Introduction
 <p float="left">
-<img src="https://user-images.githubusercontent.com/15151687/53893472-9a8e2600-4071-11e9-8c0f-5150376a76f5.gif" width="375" height="812">
-<img src="https://user-images.githubusercontent.com/15151687/53893489-a24dca80-4071-11e9-9670-900247bda80d.gif" width="375" height="812">
+<img src="https://user-images.githubusercontent.com/15151687/55480707-e1187580-565b-11e9-8922-765f5bede2f4.png" width="400" height="830">
+<img src="https://user-images.githubusercontent.com/15151687/55480723-e675c000-565b-11e9-9780-2406e2648ae3.png" width="400" height="830">
+</p>
+<p float="left">
+<img src="https://user-images.githubusercontent.com/15151687/55480760-f4c3dc00-565b-11e9-8bcd-63ae9b5113da.gif" width="400" height="830">
+<img src="https://user-images.githubusercontent.com/15151687/55480767-f68d9f80-565b-11e9-8d47-1ed4f1c59be9.gif" width="400" height="830">
 </p>
 
 ## Usage
@@ -84,6 +88,12 @@ defaultBehavior.showDurarion = 0.3
 defaultBehavior.duration = 3.0
 defaultBehavior.dismissDuration = 0.3
 ...
+```
+
+### Self-sizing
+```swift
+ToastAppearanceManager.default.height = AutomaticDimension
+ToastAppearanceManager.icon.height = AutomaticDimension\
 ```
 
 ## Installation
