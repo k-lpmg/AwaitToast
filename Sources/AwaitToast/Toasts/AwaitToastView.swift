@@ -22,7 +22,7 @@ class AwaitToastView<A>: ToastView<A> where A: ToastAppearance {
         }
         let originX = titleEdgeInsets.left
         let width = contentView.bounds.width - titleEdgeInsets.left - titleEdgeInsets.right
-        let height = contentView.bounds.height - titleEdgeInsets.top
+        let height = contentView.bounds.height - titleEdgeInsets.top - titleEdgeInsets.bottom
         return CGRect(x: originX, y: originY, width: width, height: height)
     }
     
