@@ -103,7 +103,7 @@ ToastAppearanceManager.icon.height = AutomaticDimension
 platform :ios, '9.0'
 use_frameworks!
 
-target 'MyApp' do
+target '<Your Target Name>' do
     pod 'AwaitToast'
 end
 ```
