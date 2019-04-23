@@ -87,7 +87,7 @@ defaultBehavior.dismissDuration = 0.3
 ...
 ```
 
-### Self-sizing
+#### Self-sizing
 <img src="https://user-images.githubusercontent.com/15151687/55480769-f8576300-565b-11e9-9457-79e4b43ad087.gif" width="400" height="830">
 
 ```swift
@@ -108,7 +108,7 @@ target '<Your Target Name>' do
 end
 ```
 
-### Carthage (iOS 9+)
+#### Carthage (iOS 9+)
 
 ```ruby
 github "k-lpmg/AwaitToast"
