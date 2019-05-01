@@ -4,8 +4,7 @@
 ![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://raw.githubusercontent.com/k-lpmg/AwaitToast/master/LICENSE)
 
-🍞 Basic toast as well as async waiting toast.
-Inspired by facebook posting toast.
+🍞 An async waiting toast with basic toast. Inspired by facebook posting toast.
 
 ## Introduction
 <p float="left">
