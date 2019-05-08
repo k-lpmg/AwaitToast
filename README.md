@@ -75,7 +75,7 @@ defaultAppearance.textAlignment = .left
 ```swift
 // Get singleton behavior object
 let defaultBehavior = ToastBehaviorManager.default
-let iconBehavior = ToastBehaviorManager.icon
+let awaitBehavior = ToastBehaviorManager.await
 
 // Update singletone behavior properties
 defaultBehavior.isTappedDismissEnabled = false
