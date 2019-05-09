@@ -1,8 +1,8 @@
 # AwaitToast
+[![Build Status](https://travis-ci.org/k-lpmg/AwaitToast.svg?branch=master)](https://travis-ci.org/k-lpmg/AwaitToast)
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
 [![Cocoapods](https://img.shields.io/cocoapods/v/AwaitToast.svg?style=flat)](https://cocoapods.org/pods/AwaitToast)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://raw.githubusercontent.com/k-lpmg/AwaitToast/master/LICENSE)
 
 🍞 An async waiting toast with basic toast. Inspired by facebook posting toast.
 
