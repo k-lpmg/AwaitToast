@@ -79,7 +79,18 @@ class ToastOperation<A, B>: Operation where A: ToastAppearance, B: ToastBehavior
         if view.appearance.height == AutomaticDimension {
             view.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
         } else {
-            view.heightAnchor.constraint(equalToConstant: view.appearance.height).isActive = true
+            let safeAreaPadding: CGFloat
+            switch view.direction {
+            case .top:
+                safeAreaPadding = UIApplication.shared.statusBarFrame.size.height
+            case .bottom:
+                if #available(iOS 11.0, *), let window = UIApplication.shared.keyWindow {
+                    safeAreaPadding = window.safeAreaInsets.bottom
+                } else {
+                    safeAreaPadding = 0
+                }
+            }
+            view.heightAnchor.constraint(equalToConstant: view.appearance.height + safeAreaPadding).isActive = true
         }
         
         let initialViewYAnchor: NSLayoutConstraint
